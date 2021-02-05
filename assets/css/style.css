@@ -17,6 +17,8 @@
   --color-card-title: #212121;
   --color-card-total: #4d00d3;
   --color-card-total-title: #ffffff;
+  --color-card-income: #12a454;
+  --color-card-expense: #e92929;
 
   --color-table-body: #313131;
   --color-table-text: #ffffff;
@@ -138,7 +140,8 @@ header {
 #logo {
   display: block;
   width: 170px;
-  margin: 0 auto
+  margin: 0 auto;
+  user-select: none;
 }
 
 /* Balance */
@@ -174,8 +177,17 @@ header {
   justify-content: space-between;
 }
 
+.card__content #card--income {
+  color: var(--color-card-income);
+}
+
+.card__content #card--expense {
+  color: var(--color-card-expense);
+}
+
 .card__content .card--image {
   width: 30px;
+  user-select: none;
 }
 
 .card__content .card__balance {
@@ -230,6 +242,10 @@ header {
   background: var(--color-table-body);
   color: var(--color-table-text);
   padding: 1rem 2rem;
+}
+
+#table__content img {
+  user-select: none;
 }
 
 #table__content .table--description {
