@@ -44,6 +44,7 @@ const Transaction = {
 
 const Modal = {
   open() {
+    $(".modal__container").classList.remove("modal--close")
     $(".modal__container").classList.add("modal--active")
   },
   close() {
