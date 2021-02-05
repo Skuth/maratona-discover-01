@@ -57,7 +57,7 @@ body {
 }
 
 .main__container {
-  width: min(90vw, 800px);
+  width: min(90vw, 1300px);
   margin: 0 auto;
 }
 
@@ -349,7 +349,7 @@ footer {
 }
 
 /* Responsive */
-@media (min-width: 800px) {
+@media (min-width: 1300px) {
   html {
     font-size: 87.5%;
   }

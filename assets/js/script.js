@@ -81,7 +81,7 @@ const DOM = {
     const actionItem = document.createElement("td")
     
     const actionImage = document.createElement("img")
-    actionImage.src="./assets/icons/minus.svg"
+    actionImage.src="./assets/images/minus.svg"
     actionImage.alt="Icone de remover transação"
 
     actionItem.appendChild(actionImage)
