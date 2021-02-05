@@ -63,6 +63,37 @@ body {
   margin: 0 auto;
 }
 
+/* Animate */
+
+@keyframes tableFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 /* Titles */
 
 h2 {
@@ -219,7 +250,6 @@ header {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
-
 #table__content th {
   background: var(--color-table-body);
   color: var(--color-table-text);
@@ -227,6 +257,10 @@ header {
   font-weight: 400;
   padding: 1rem 2rem;
   text-align: left;
+}
+
+.table--fadeIn {
+  animation: tableFadeIn 1s;
 }
 
 #table__content tbody tr {
@@ -261,26 +295,6 @@ header {
 }
 
 /* Modal */
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes modalFadeOut {
-  from {
-    opacity: 1;
-    visibility: visible;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
 
 .modal__container {
   position: fixed;

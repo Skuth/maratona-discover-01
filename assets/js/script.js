@@ -67,6 +67,7 @@ const DOM = {
   innerHTMLTransaction({ description, amount, date }, index) {
     const tableItem = document.createElement("tr")
     tableItem.dataset.index = index
+    tableItem.classList.add("table--fadeIn")
 
     const descriptionItem = document.createElement("td")
     descriptionItem.appendChild(document.createTextNode(description))
