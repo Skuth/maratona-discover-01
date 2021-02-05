@@ -53,6 +53,8 @@ const Modal = {
 
     setTimeout(() => {
       $(".modal__container").classList.remove("modal--close")
+      Form.clearFields()
+      Form.resetErros()
     }, 500)
   }
 }
@@ -146,6 +148,8 @@ const Form = {
     }
   },
   validateFields() {
+    Form.resetErros()
+
     const { description, amount, date } = Form.getValues()
     
     if (
@@ -153,6 +157,7 @@ const Form = {
       amount.trim() === "" ||
       date.trim() === ""
     ) throw new Error("Por favor, preencha todos os campos.")
+
   },
   formatValues() {
     let { description, amount, date } = Form.getValues()
@@ -170,6 +175,11 @@ const Form = {
     Form.inputs.amount.value = ""
     Form.inputs.date.value = ""
   },
+  resetErros() {
+    Object.values(Form.inputs).map(input => {
+      input.classList.remove("input--error")
+    })
+  },
   submit(e) {
     e.preventDefault()
     
@@ -179,10 +189,13 @@ const Form = {
       const transaction = Form.formatValues()
 
       Transaction.add(transaction)
-      Form.clearFields()
       Modal.close()
     } catch (error) {
-      alert(error.message)
+      Object.values(Form.inputs).map(input => {
+        if (input.value === "") {
+          input.classList.add("input--error")
+        }
+      })
     }
   }
 }
