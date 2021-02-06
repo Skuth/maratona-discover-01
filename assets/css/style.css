@@ -229,7 +229,7 @@ header {
   visibility: hidden;
 }
 #theme__checkbox:checked + #theme__switch::before {
-  margin-left: calc(60px - 25px - 3px);
+  margin-left: calc(60px - 25px - 4px);
 }
 #theme__switch {
   position: relative;
