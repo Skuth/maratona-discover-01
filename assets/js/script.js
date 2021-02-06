@@ -15,6 +15,10 @@ const Transaction = {
     Transaction.all.push(transaction)
     App.reload()
   },
+  edit(transaction, index) {
+    Transaction.all[index] = transaction
+    App.reload()
+  },
   remove(index) {
     Transaction.all.splice(index, 1)
     App.reload()
@@ -55,6 +59,7 @@ const Modal = {
       $(".modal__container").classList.remove("modal--close")
       Form.clearFields()
       Form.resetErros()
+      Form.resetEditVerify()
     }, 500)
   }
 }
@@ -80,16 +85,25 @@ const DOM = {
     amount > 0 ? amountItem.classList.add("table--income") : amountItem.classList.add("table--expense")
 
     const dateItem = document.createElement("td")
-    dateItem.appendChild(document.createTextNode(date))
+    dateItem.appendChild(document.createTextNode(Utils.formatDate(date)))
 
     const actionItem = document.createElement("td")
-    
-    const actionImage = document.createElement("img")
-    actionImage.src="./assets/images/minus.svg"
-    actionImage.alt="Icone de remover transação"
 
-    actionItem.appendChild(actionImage)
-    actionItem.addEventListener("click", () => Transaction.remove(index))
+    const actionEdit = document.createElement("img")
+    actionEdit.src="./assets/images/edit.svg"
+    actionEdit.alt="Icone de editar transação"
+    actionEdit.addEventListener("click", () => {
+      Form.setValues({ description, amount, date }, index)
+      Modal.open()
+    })
+    
+    const actionRemove = document.createElement("img")
+    actionRemove.src="./assets/images/minus.svg"
+    actionRemove.alt="Icone de remover transação"
+    actionRemove.addEventListener("click", () => Transaction.remove(index))
+
+    actionItem.appendChild(actionEdit)
+    actionItem.appendChild(actionRemove)
 
     tableItem.appendChild(descriptionItem)
     tableItem.appendChild(amountItem)
@@ -138,7 +152,15 @@ const Form = {
   inputs: {
     description: $("input#description"),
     amount: $("input#amount"),
-    date: $("input#date")
+    date: $("input#date"),
+    edit: $("input#edit")
+  },
+  setValues({description, amount, date}, index) {
+    Form.inputs.description.value = description
+    Form.inputs.amount.value = (amount / 100)
+    Form.inputs.date.value = date,
+    Form.inputs.edit.value = true
+    Form.inputs.edit.dataset.index = index
   },
   getValues() {
     return {
@@ -146,6 +168,10 @@ const Form = {
       amount: Form.inputs.amount.value,
       date: Form.inputs.date.value
     }
+  },
+  resetEditVerify() {
+    Form.inputs.edit.value = false
+    Form.inputs.edit.dataset.index = ""
   },
   validateFields() {
     Form.resetErros()
@@ -162,7 +188,6 @@ const Form = {
   formatValues() {
     let { description, amount, date } = Form.getValues()
     amount = Utils.formatAmount(amount)
-    date = Utils.formatDate(date)
 
     return {
       description,
@@ -188,7 +213,13 @@ const Form = {
 
       const transaction = Form.formatValues()
 
-      Transaction.add(transaction)
+      if (Form.inputs.edit.value == "true") {
+        const index = Form.inputs.edit.getAttribute("data-index")
+        Transaction.edit(transaction, index)
+      } else {
+        Transaction.add(transaction)
+      }
+
       Modal.close()
     } catch (error) {
       Object.values(Form.inputs).map(input => {

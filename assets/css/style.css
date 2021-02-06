@@ -276,6 +276,12 @@ header {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
+#table__container img {
+  cursor: pointer;
+  width: 28px;
+  margin: 0 10px;
+}
+
 #table__content th {
   background: var(--color-table-body);
   color: var(--color-table-text);
