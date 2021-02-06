@@ -6,6 +6,12 @@ const Storage = {
   },
   set() {
     localStorage.setItem("dev.finances:transactions", JSON.stringify(Transaction.all))
+  },
+  getTheme() {
+    return JSON.parse(localStorage.getItem("dev.finances:theme")) || false
+  },
+  setTheme() {
+    localStorage.setItem("dev.finances:theme", Theme.lightTheme)
   }
 }
 
@@ -231,11 +237,32 @@ const Form = {
   }
 }
 
+const Theme = {
+  page: $("html"),
+  checkbox: $("input#theme__checkbox"),
+  lightTheme: Storage.getTheme(),
+  setTheme() {
+    if (Theme.lightTheme) {
+      Theme.page.dataset.theme = "light"
+    } else {
+      Theme.page.dataset.theme = ""
+    }
+  },
+  toggleTheme() {
+    Theme.lightTheme = !Theme.lightTheme
+    App.reload()
+  }
+}
+
 const App = {
   init() {
     Transaction.all.forEach(DOM.addTransaction)
     DOM.updateBalance()
+
     Storage.set()
+    Storage.setTheme()
+
+    Theme.setTheme()
   },
   reload() {
     DOM.clearTransactions()

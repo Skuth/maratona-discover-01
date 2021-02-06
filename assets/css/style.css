@@ -2,7 +2,6 @@
 
 :root {
   --color-body: #212121;
-  --color-logo: #ffffff;
   --color-title: #ffffff;
   --color-header: #7029e9;
 
@@ -29,6 +28,21 @@
   --color-modal: #f0f2f5;
   --color-modal-title: #212121;
   --color-modal-error: #e92929;
+
+  --color-checkbox: #ffffff;
+}
+
+[data-theme="light"] {
+  --color-body: #ffffff;
+
+  --color-card: #eeeeee;
+  --color-card-total-title: #dddddd;
+
+  --color-table-body: #dddddd;
+  --color-table-text: #212121;
+  --color-table-description: #212121;
+
+  --color-checkbox: #212121;
 }
 
 * {
@@ -45,6 +59,7 @@ html {
 body {
   background: var(--color-body);
   font-family: "Poppins", sans-serif;
+  transition: background 0.5s;
 }
 
 .sr--only {
@@ -201,6 +216,34 @@ header {
   user-select: none;
 }
 
+#theme__checkbox {
+  visibility: hidden;
+}
+#theme__checkbox:checked + #theme__switch::before {
+  margin-left: calc(60px - 25px - 3px);
+}
+#theme__switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 30px;
+  background: var(--color-body);
+  border-radius: 30px;
+}
+#theme__switch::before {
+  content: "";
+  position: absolute;
+  top: 2.5px;
+  left: 0;
+  margin-left: 4px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--color-checkbox);
+  transition: all 0.5s;
+}
+
 /* Balance */
 
 #balance__content {
@@ -289,6 +332,7 @@ header {
   font-weight: 400;
   padding: 1rem 2rem;
   text-align: left;
+  transition: background 0.5s;
 }
 
 .table--fadeIn {
@@ -308,6 +352,7 @@ header {
   background: var(--color-table-body);
   color: var(--color-table-text);
   padding: 1rem 2rem;
+  transition: background 0.5s;
 }
 
 #table__content img {

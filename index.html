@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +17,10 @@
   
   <header>
     <img src="./assets/images/logo.svg" alt="Logo dev.finance$" id="logo">
+    <div id="theme__changer">
+      <input type="checkbox" id="theme__checkbox">
+      <label for="theme__checkbox" id="theme__switch" onclick="Theme.toggleTheme()"></label>
+    </div>
   </header>
 
   <main class="main__container">
