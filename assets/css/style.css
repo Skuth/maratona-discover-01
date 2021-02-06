@@ -482,6 +482,13 @@ footer {
   }
 }
 
+@media (max-width: 800px) {
+  #table__container img {
+    margin: 10px 0;
+    display: block;
+  }
+}
+
 @media (max-width: 500px) {
   .from__input__group.group__actions {
     flex-direction: column;
@@ -492,5 +499,4 @@ footer {
   .from__input__group.group__actions .button {
     width: 100%;
   }
-
 }
