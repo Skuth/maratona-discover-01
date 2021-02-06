@@ -216,6 +216,13 @@ header {
   user-select: none;
 }
 
+#theme__changer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
 #theme__checkbox {
   visibility: hidden;
 }
@@ -223,9 +230,8 @@ header {
   margin-left: calc(60px - 25px - 3px);
 }
 #theme__switch {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: relative;
+  display: block;
   width: 60px;
   height: 30px;
   background: var(--color-body);
