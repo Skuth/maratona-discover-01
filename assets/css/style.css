@@ -3,6 +3,7 @@
 :root {
   --color-body: #212121;
   --color-title: #ffffff;
+  --color-footer: #ffffff;
   --color-header: #7029e9;
 
   --color-link: #7029e9;
@@ -34,6 +35,7 @@
 
 [data-theme="light"] {
   --color-body: #ffffff;
+  --color-footer: #212121;
 
   --color-card: #eeeeee;
   --color-card-total-title: #dddddd;
@@ -338,7 +340,7 @@ header {
   font-weight: 400;
   padding: 1rem 2rem;
   text-align: left;
-  transition: background 0.5s;
+  transition: background 0.5s, color 0.5s;
 }
 
 .table--fadeIn {
@@ -358,7 +360,7 @@ header {
   background: var(--color-table-body);
   color: var(--color-table-text);
   padding: 1rem 2rem;
-  transition: background 0.5s;
+  transition: background 0.5s, color 0.5s;
 }
 
 #table__content img {
@@ -462,8 +464,9 @@ header {
 footer {
   text-align: center;
   padding: 4rem 0 2rem;
-  color: var(--color-title);
+  color: var(--color-footer);
   opacity: 0.6;
+  transition: color 0.5s;
 }
 
 /* Responsive */
